@@ -7,41 +7,41 @@ const NODE_ENV = process.env.NODE_ENV || "development";
 
 // Create HTTP server
 const server = app.listen(PORT, () => {
-  console.log(`🚀 Server running in ${NODE_ENV} mode on port ${PORT}`);
-  console.log(`📡 API URL: http://localhost:${PORT}`);
-  console.log(`🏥 Health Check: http://localhost:${PORT}/health`);
-  console.log(`🔗 API v1: http://localhost:${PORT}/api/v1`);
+  console.log(`Server running in ${NODE_ENV} mode on port ${PORT}`);
+  console.log(`API URL: http://localhost:${PORT}`);
+  console.log(`Health Check: http://localhost:${PORT}/health`);
+  console.log(`API v1: http://localhost:${PORT}/api/v1`);
 });
 
 // Handle unhandled promise rejections
 process.on("unhandledRejection", (err, promise) => {
-  console.error("❌ Unhandled Promise Rejection:", err);
+  console.error("Unhandled Promise Rejection:", err);
   console.error("Promise:", promise);
 
   // Close server & exit process
   server.close(() => {
-    console.log("🛑 Server closed due to unhandled promise rejection");
+    console.log("Server closed due to unhandled promise rejection");
     process.exit(1);
   });
 });
 
 // Handle uncaught exceptions
 process.on("uncaughtException", (err) => {
-  console.error("❌ Uncaught Exception:", err);
+  console.error("Uncaught Exception:", err);
   console.error("Stack:", err.stack);
 
   // Close server & exit process
   server.close(() => {
-    console.log("🛑 Server closed due to uncaught exception");
+    console.log("Server closed due to uncaught exception");
     process.exit(1);
   });
 });
 
 // Graceful shutdown on SIGTERM (Heroku, Docker, etc.)
 process.on("SIGTERM", () => {
-  console.log("🛑 SIGTERM received. Shutting down gracefully...");
+  console.log("SIGTERM received. Shutting down gracefully...");
   server.close(() => {
-    console.log("✅ Process terminated");
+    console.log("Process terminated");
     process.exit(0);
   });
 });
