@@ -102,7 +102,7 @@ blogapi/
 3. **Set up environment variables**
 
    ```bash
-   cp .env.example .env
+   cp .env
    # Edit .env with your configuration
    ```
 
@@ -119,7 +119,6 @@ Create a `.env` file in the root directory with the following variables:
 PORT=3000
 MONGO_URI=mongodb://localhost:27017/blogapi
 JWT_SECRET=your_jwt_secret_key_here
-NODE_ENV=development
 ```
 
 ## 🗄 Database Setup
